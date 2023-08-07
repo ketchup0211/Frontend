@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <style>
+        .box {
+            width: 100px;
+            height: 3000px;
+            border: 1px solid;
+            display: inline-block;
+            background-color: skyblue;
+            border-color: blue;
+    }
+        .red-box {
+            height: 100px;
+            background-color: pink;
+            border-color: red;
+        }
+        #pos-element {
+            position : sticky;
+            top:10px;
+    }
+    @media only screen and (min-width: 800px) {
+    /* CSS code goes here */
+    }
+     </style>
+    <div class="box">1</div>
+    <div class="box red-box" id="pos-element">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+</body>
+</html>

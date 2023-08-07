@@ -1,0 +1,17 @@
+.numbers{
+    text-align: center;
+    padding: 10px;
+    
+}
+.number{
+    background-color: salmon;
+    width : 50px;
+    border : 1px solid black;
+    border-radius : 100%;
+    padding : 20px 10px;
+    margin : 10px;
+    font-size: 22px;
+    font-weight:normal;
+    text-align: center;
+    display : inline-block;
+}
