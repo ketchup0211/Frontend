@@ -4,39 +4,45 @@ const escapePos = {row : 1, col : 7,};
 const rowRange = [0,6];
 const colRange = [0,8];
 
+document.querySelector('.current').addEventListener('keydown', e =>{
+    getNewPositionByKey(e);
+});
+document.querySelector('.current').addEventListener('keyup', e=>{
+    if(e.key === "ArrowRight"||e.key === "ArrowLeft"||e.key === "ArrowUp"||e.key === "ArrowDown")
+    {
+        keyUpHandler();
+    }
+});
+
 const getElementByPosition = (pos) =>{
     //row의 경우 cells query 중 몇번째인지를 통해 알 수 있다. 
     const rowPos = document.querySelectorAll('.cells')[pos.row];
     const element = rowPos.children[pos.col];
 
     return element;
-    
 }
 
-const getNewPositionByKey = () =>{
-    document.querySelector('.current').addEventListener('keydown', keyDownHandler);
+const getNewPositionByKey = (e) =>{
+    let newPos = currentPos;
 
-    const keyDownHandler = (e) =>
-    {
-        if(e.key === "ArrowRight") {
-        currentPos.col++;
-        //if (currentPos.col > colRange[1]) currentPos.col--;
-        }
-        else if(e.key === "ArrowLeft") {
-            currentPos.col--;
-            //if (currentPos.col < colRange[0]) currentPos.col++;
-        }
-        else if(e.key === "ArrowUp") {
-        currentPos.row++;
-            //if (currentPos.row > rowRange[1]) currentPos.row--;
-        }
-        else if(e.key === "ArrowDown") {
-            currentPos.row--;
-            //if (currentPos.row < rowRange[0]) currentPos.row++;
-        }
+    if(e.key === "ArrowRight") {
+        newPos.col++;
+    //if (currentPos.col > colRange[1]) currentPos.col--;
     }
-
-    return currentPos;
+    else if(e.key === "ArrowLeft") {
+        newPos.col--;
+        //if (currentPos.col < colRange[0]) currentPos.col++;
+    }
+    else if(e.key === "ArrowUp") {
+        newPos.row++;
+        //if (currentPos.row > rowRange[1]) currentPos.row--;
+    }
+    else if(e.key === "ArrowDown") {
+        newPos.row--;
+        //if (currentPos.row < rowRange[0]) currentPos.row++;
+    }
+    console.log(newPos);
+    return newPos;
 }
 
 const isPositionInRange = (pos) => {
@@ -51,8 +57,6 @@ const isPositionWall = (pos) => {
 }
 
 const keyUpHandler = () =>{
-    document.querySelector('.current').addEventListener('keyup', keyUpHandler);
-
     document.querySelector('.current').style.backgroundColor = "";
     let newPos = getNewPositionByKey();
     console.log(newPos);
