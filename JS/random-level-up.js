@@ -1,4 +1,4 @@
-const tryLevelUp = () => {
+const work = () => {
     const successPos = [1, 0.6, 0.36, 0.22, 0.13, 0.08, 0.05, 0.03, 0.02, 0.01];
 
     const currentLevel = document.getElementById('current-level');
@@ -6,10 +6,6 @@ const tryLevelUp = () => {
     const attempts = document.getElementById('attempts');
     const parsedAttempt = parseInt(attempts.innerText);
     const randPos = successPos[parsedLevel];
-
-    console.log('current-level : ' + parsedLevel);
-    console.log('attempts : ' + parsedAttempt);
-    console.log('success Pos : ' + randPos);
 
     const getRandomBinaryResult =(randPos)=> 
     {
@@ -29,4 +25,19 @@ const tryLevelUp = () => {
     attempts.innerText = `${parsedAttempt + 1}`;
     console.log('attempts : ' + attempts.innerText);
     return;
+}
+
+const tryLevelUp = () => {
+    const levelUpLoopId = setInterval(work, 50);
+
+    let currentLevel = document.getElementById('current-level');
+    let parsedLevel = parseInt(currentLevel.innerText);
+    console.log('> current-level : ' + parsedLevel);
+    if (parsedLevel === 10){
+        clearInterval(levelUpLoopId);
+    }
+    return;
 };
+
+//work()가 아닌 work 전달
+//level 10이 되면 work 함수 중단하고 싶다. 어떻게?
